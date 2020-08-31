@@ -28,6 +28,14 @@ class App extends Component {
     })
   }
 
+  removeGift = (idToRemove) => {
+    const { gifts } = this.state
+    const giftsWithoutId = gifts.filter(gift => gift.id !== idToRemove)
+    this.setState({
+      gifts: giftsWithoutId
+    })
+  }
+
   render() {
     return (
       <div>
