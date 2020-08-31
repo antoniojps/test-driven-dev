@@ -3,15 +3,15 @@ import { shallow } from 'enzyme'
 import App from './App'
 import toJson from "enzyme-to-json";
 
-const app = shallow(<App />)
-
-afterEach(() => {
-  app.setState({
-    gifts: []
-  })
-})
-
 describe('App', () => {
+  const app = shallow(<App />)
+
+  afterEach(() => {
+    app.setState({
+      gifts: []
+    })
+  })
+
   it('renders correctly', () => {
     expect(toJson(app)).toMatchSnapshot()
   })
@@ -31,6 +31,10 @@ describe('App', () => {
 
     it('adds a new gift to the rendered list', () => {
       expect(app.find('.gift-list').children().length).toEqual(1)
+    })
+
+    it('creates a gift component', () => {
+      expect(app.exists('Gift')).toBe(true)
     })
   })
 })
